@@ -3,5 +3,16 @@ name = "filter-with-state"
 version = "0.1.0"
 authors = ["rhysd <https://rhysd.github.io>"]
 edition = "2018"
+description = "Filter iterators with state"
+repository = "https://github.com/rhysd/filter-with-state"
+readme = "README.md"
+license-file = "LICENSE.txt"
+
+[badges]
+travis-ci = { repository = "rhysd/path-slash" }
+maintenance = { status = "actively-developed" }
+
+[package.metadata.release]
+no-dev-version = true
 
 [dependencies]
