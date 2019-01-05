@@ -169,7 +169,7 @@ mod tests {
     }
 
     #[test]
-    fn unique_map_by_filter_with() {
+    fn unique_map_by_filter_map_with() {
         let v = vec![1, 2, 3, 2, 1, 4, 3];
         let v = v
             .into_iter()
@@ -193,4 +193,43 @@ mod tests {
         );
     }
 
+    #[test]
+    fn unique_nested_iterator_by_filter_with() {
+        let vv = vec![vec![1, 2, 1], vec![1, 2, 2, 3]];
+        let v2 = vv
+            .iter()
+            .map(|v| {
+                v.iter().filter_with(HashSet::new(), |state, i| {
+                    if state.contains(*i) {
+                        false
+                    } else {
+                        state.insert(**i);
+                        true
+                    }
+                })
+            })
+            .flatten()
+            .collect::<Vec<_>>();
+        assert_eq!(v2, vec![&1, &2, &1, &2, &3]);
+    }
+
+    #[test]
+    fn unique_nested_iterator_by_filter_with_for_into_iter() {
+        let vv = vec![vec![1, 2, 1], vec![1, 2, 2, 3]];
+        let v2 = vv
+            .into_iter()
+            .map(|v| {
+                v.into_iter().filter_with(HashSet::new(), |state, i| {
+                    if state.contains(i) {
+                        false
+                    } else {
+                        state.insert(*i);
+                        true
+                    }
+                })
+            })
+            .flatten()
+            .collect::<Vec<_>>();
+        assert_eq!(v2, vec![1, 2, 1, 2, 3]);
+    }
 }
