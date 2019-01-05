@@ -56,7 +56,7 @@ where
     }
 }
 
-pub trait FilterWithExt: Iterator {
+pub trait IteratorExt: Iterator {
     #[inline]
     fn filter_with<S, P>(self, state: S, predicate: P) -> FilterWith<Self, P, S>
     where
@@ -84,7 +84,7 @@ pub trait FilterWithExt: Iterator {
     }
 }
 
-impl<I: Iterator> FilterWithExt for I {}
+impl<I: Iterator> IteratorExt for I {}
 
 #[cfg(test)]
 mod tests {
