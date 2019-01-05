@@ -1,0 +1,19 @@
+language: rust
+rust: stable
+dist: xenial
+
+env:
+  global:
+    - RUST_STACKTRACE=full
+
+before_script:
+  - rustc -V
+  - cargo -V
+
+script:
+  - cargo test --verbose
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change

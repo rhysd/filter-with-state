@@ -1,5 +1,6 @@
 Filtering given iterator with state
 ===================================
+[![Build Status][travis-ci-badge]][travis-ci]
 
 This is a tiny library to provide `filter_with` and `filter_map_with` methods for `Iterator`.
 
@@ -137,3 +138,6 @@ to `Iterator` trait.
     // Here Iterator objects have .fiter_with() and .filter_map_with() methods
 }
 ```
+
+[travis-ci-badge]: https://travis-ci.org/rhysd/filter-with-state.svg?branch=master
+[travis-ci]: https://travis-ci.org/rhysd/filter-with-state
