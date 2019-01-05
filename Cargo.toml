@@ -1,0 +1,7 @@
+[package]
+name = "fold-with"
+version = "0.1.0"
+authors = ["rhysd <https://rhysd.github.io>"]
+edition = "2018"
+
+[dependencies]
